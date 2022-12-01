@@ -1,7 +1,6 @@
 import React from "react";
 import "../../DefaultSVG.css"
 import DefaultSVG from "../../DefaultSVG";
-import "./ENSIBS_RDC.css";
 
 class ENSIBS_RDC extends DefaultSVG {
     constructor(props) {
@@ -10,8 +9,9 @@ class ENSIBS_RDC extends DefaultSVG {
 
     render() {
         return (
-            <div>
-                <svg width="1500" height="800" version="1.1" className="SVG_ENSIBS_RDC" transform={this.orientation ? "" : "rotate(90)"}>
+            <div className="scaling-svg-container">
+                <svg width="1311.4" height="609.32" version="1.1" className="SVG_ENSIBS_RDC scaling-svg" transform={this.orientation ? "" : "rotate(90)"}>
+                    <g transform="translate(-39.769 -108.88)">
                     <path
                         d="m1203.7 569.16c-2.742 0.40671-4.9875 2.8963-5.0392 5.6783-0.059 8.5052-0.01 17.015-0.025 25.522 0.01 35.882-0.011 71.766 0.01 107.65-0.022 2.8018 2.1429 5.4124 4.9146 5.8662 2.2736 0.24498 4.5761 0.0572 6.8616 0.1161 44.734-5e-3 89.469 0.0107 134.2-8e-3 2.7634 0.0154 5.3602-2.0838 5.8449-4.8172 0.286-2.0676 0.074-4.1748 0.1394-6.2588-0.01-42.689 0.013-85.379-0.01-128.07-0.044-3.0906-2.8292-5.7967-5.9193-5.7565-46.686-4e-3 -93.372-0.0121-140.06 4e-3 -0.3066 0.0247-0.6133 0.0493-0.9199 0.074z"
                         fill="#0f0" className="room" strokeLinecap="round" strokeLinejoin="round" stroke="#0f0"
@@ -103,7 +103,8 @@ class ENSIBS_RDC extends DefaultSVG {
                     <path
                         d="m547.99 558.75c-1.8922 0.36212-3.2855 2.1844-3.2087 4.098 0.0403 8.8842 0.0292 17.771 0.10163 26.654 0.0138 2.1129 1.9116 3.9255 4.0145 3.8987 28.486 0.0181 56.973 3e-3 85.46 8e-3 2.0907 0.0462 4.0278-1.708 4.0685-3.8198 0.0633-7.5226 9e-3 -15.051 0.0272-22.576-0.059-1.7401 0.12359-3.4993-0.10119-5.227-0.3974-1.9839-2.431-3.3396-4.4125-3.1214-28.393 7e-3 -56.787-0.0131-85.18 0.01-0.25654 0.0254-0.51308 0.0507-0.76962 0.0761z"
                         strokeLinecap="round" strokeLinejoin="round" stroke="#0ae" fill="url(#patternEscaliersLtoR)"/>
-                </svg>
+                </g>
+                    </svg>
                 <div style={{backgroundColor: this.state.eventColor}}
                      className={this.state.eventId ? "popUp" : "hidden"}>
                     <button className="popUpCloseButton" onClick={() => {

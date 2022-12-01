@@ -1,7 +1,6 @@
 import React from "react";
 import "../../DefaultSVG.css"
 import DefaultSVG from "../../DefaultSVG";
-import "./ENSIBS_E1.css";
 
 class ENSIBS_E1 extends DefaultSVG {
     constructor(props) {

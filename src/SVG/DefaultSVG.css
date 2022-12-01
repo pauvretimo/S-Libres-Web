@@ -98,3 +98,20 @@ svg {
     color: #545fbe;
     filter: drop-shadow(1px 1px 2px #4551c5);
 }
+
+
+/* Example-specific styles */
+.scaling-svg-container {
+    position: relative;
+    height:90%;
+    width: 90%;
+    padding: 0;
+    /* over-ride this inline for aspect ratio other than square */
+}
+.scaling-svg {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top:0;
+}
