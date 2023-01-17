@@ -23,23 +23,28 @@ class Batiment extends React.Component {
     }
 
     handleTheme = () => {
-        const t = this.state.theme;
-        const background = document.body.style.backgroundColor
-        console.log(background)
-        document.body.style.backgroundColor = background === "rgb(20, 20, 20)" ? "#dde" : "rgb(20, 20, 20)"
-        this.setState({theme: t === "light" ? "dark" : "light"})
+
+        let currentTheme = document.documentElement.getAttribute("data-theme");
+        let targetTheme = "light";
+
+        if (currentTheme === "light") {
+            targetTheme = "dark";
+        }
+
+        document.documentElement.setAttribute('data-theme', targetTheme)
+        localStorage.setItem('theme', targetTheme);
+
+        this.setState({theme: targetTheme})
     }
 
     async componentDidMount() {
+        let storedTheme = localStorage.getItem('theme') || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        if (storedTheme)
+            document.documentElement.setAttribute('data-theme', storedTheme)
+        else
+            storedTheme = "dark";
 
-        localStorage.clear()
-
-        this.setState({ isLoading: true });
-        console.log(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
-        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            this.setState({theme: "dark"})
-            document.body.style.backgroundColor = "rgb(20, 20, 20)";
-        }
+        this.setState({ isLoading: true, theme: storedTheme });
 
 
     try {

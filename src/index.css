@@ -20,9 +20,11 @@ code {
   --shadowColor: gray;
   --focusShadowColor: black;
   --arrowColor: #7076b9;
+  --cardColor: rgba(0, 0, 0, 0.1);
+  --brightness: 1.2;
 }
 
-[data-theme="dark"] {
+html[data-theme="dark"] {
   --background: rgb(20, 20, 20);
   --color1: rgba(158, 181, 197, 0.94);
   --textColor: white;
@@ -30,4 +32,7 @@ code {
   --shadowColor: lightgray;
   --focusShadowColor: white;
   --arrowColor: #5c64b9;
+  --cardColor: rgba(255, 255, 255, 0.1);
+  --brightness: 1.8;
+
 }
