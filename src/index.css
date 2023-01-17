@@ -18,14 +18,16 @@ code {
   --textColor: black;
   --grayColor: #555;
   --shadowColor: gray;
+  --focusShadowColor: black;
   --arrowColor: #7076b9;
 }
 
 [data-theme="dark"] {
-  --background: #444449;
+  --background: rgb(20, 20, 20);
   --color1: rgba(158, 181, 197, 0.94);
   --textColor: white;
   --grayColor: #829696;
   --shadowColor: lightgray;
+  --focusShadowColor: white;
   --arrowColor: #5c64b9;
 }

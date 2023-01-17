@@ -1,7 +1,6 @@
 import React from "react";
 import "./Menu.css"
 import PropTypes from 'prop-types';
-import DefaultSVG from "./SVG/DefaultSVG";
 
 class Menu extends React.Component {
     constructor(props) {
@@ -21,14 +20,17 @@ class Menu extends React.Component {
         this.handleT2 = this.handleT2.bind(this)
     }
 
+    handleKeys = (e) => {
+        if (e.code === "ArrowLeft" && !this.state.showTimer && !this.state.showLegend && !this.state.showCredits) {
+            this.handleLeft();
+        } else if (e.code === "ArrowRight" && !this.state.showTimer && !this.state.showLegend && !this.state.showCredits) {
+            this.handleRight();
+        }
+    }
+
+
     componentDidMount() {
-        window.addEventListener("keydown", (e) => {
-            if (e.code === "ArrowLeft" && !this.state.showTimer && !this.state.showLegend && !this.state.showCredits) {
-                this.handleLeft();
-            } else if (e.code === "ArrowRight" && !this.state.showTimer && !this.state.showLegend && !this.state.showCredits) {
-                this.handleRight();
-            }
-        })
+        window.addEventListener("keydown", this.handleKeys)
         const items = document.getElementsByClassName("menuItems")
         for (const i of items) {
             i.style.display = "none";
@@ -39,6 +41,10 @@ class Menu extends React.Component {
         if (this.state.showTimer) {
             this.nameInput.focus();
         }
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener("keydown", this.handleKeys)
     }
 
     display = () => {
@@ -69,7 +75,7 @@ class Menu extends React.Component {
 
     render() {
         return (
-            <div className="menuDiv">
+            <div className="menuRDiv">
                 <button className="menuOpen" onClick={this.display}>☰</button>
                 <button className="menuItems" onClick={() => this.setState({showLegend: true, showTimer: false, showCredits: false})}>?</button>
                 <button className="menuItems" onClick={() => this.setState({showTimer: true, showLegend: false, showCredits: false})}>&#128344;</button>
@@ -107,7 +113,7 @@ class Menu extends React.Component {
                         <p className="textOrange textLegend">Salles bientôt occupées</p>
                         <p className="textRed textLegend">Salles occupées</p>
                         <p className="textGrey textLegend">Salles non disponibles</p>
-                        <p className="textLightBlue textLegend">Couloirs et escaliers</p>
+                        <p className="textLightBlue textLegend">Couloirs, escaliers et ascenseurs</p>
                         <p className="textBlue textLegend">Toilettes</p>
                     </div>
                 </div>

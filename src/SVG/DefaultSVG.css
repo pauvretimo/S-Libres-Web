@@ -1,14 +1,13 @@
 path {
-    filter: drop-shadow(1px 1px 2px gray);
+    filter: drop-shadow(1px 1px 2px var(--shadowColor));
 }
 
-svg {
-    position: fixed;
-    top: 40%;
-    left: 50%;
-    max-width: 100%;
-    max-height: 100%;
-    transform: translate(-50%, -50%);
+path.room {
+    cursor: pointer;
+}
+
+path.room:hover {
+    filter: drop-shadow(1px 1px 3px var(--focusShadowColor));
 }
 
 .popUp {
@@ -104,14 +103,15 @@ svg {
 .scaling-svg-container {
     position: relative;
     height:90%;
-    width: 90%;
+    max-height: 90%;
     padding: 0;
     /* over-ride this inline for aspect ratio other than square */
 }
 .scaling-svg {
     position: absolute;
-    height: 100%;
-    width: 100%;
-    left: 0;
-    top:0;
+    max-width: 100%;
+    max-height: 100%;;
+    left:50%;
+    top:50%;
+    transform: translate(-50%, -50%);
 }

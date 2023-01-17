@@ -26,7 +26,7 @@ class Batiment extends React.Component {
         const t = this.state.theme;
         const background = document.body.style.backgroundColor
         console.log(background)
-        document.body.style.backgroundColor = background === "rgb(45, 45, 47)" ? "#dde" : "#2d2d2f"
+        document.body.style.backgroundColor = background === "rgb(20, 20, 20)" ? "#dde" : "rgb(20, 20, 20)"
         this.setState({theme: t === "light" ? "dark" : "light"})
     }
 
@@ -38,7 +38,7 @@ class Batiment extends React.Component {
         console.log(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
         if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
             this.setState({theme: "dark"})
-            document.body.style.backgroundColor = "#2d2d2f";
+            document.body.style.backgroundColor = "rgb(20, 20, 20)";
         }
 
 
@@ -75,6 +75,7 @@ class Batiment extends React.Component {
             const n = this.state.floor + 1
             this.setState({floor: n})
         }
+        console.log(this.state.floor)
     }
 
     goDown = () => {
@@ -82,6 +83,7 @@ class Batiment extends React.Component {
             const n = this.state.floor - 1
             this.setState({floor: n})
         }
+        console.log(this.state.floor)
     }
 
     render() {

@@ -35,7 +35,7 @@ class Homepage extends React.Component {
         return (
             <div>
                 <div id="cards">
-                    <div onClick={() => this.navigateTo("/vannes")} className="card">
+                    <div onClick={() => this.navigateTo("/ensibs")} className="card">
                         <div className="card-content">
                             <div className="card-image">
                                 <img className="Image" src={ensibs}></img>
@@ -58,20 +58,6 @@ class Homepage extends React.Component {
                                 <div className="card-info">
                                     <div className="card-info-title">
                                         <h3>DSEG</h3>
-                                        <h4></h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div onClick={() => this.navigateTo("/lorient")} className="card">
-                        <div className="card-content">
-                            <div className="card-image">
-                            </div>
-                            <div className="card-info-wrapper">
-                                <div className="card-info">
-                                    <div className="card-info-title">
-                                        <h3>Yves Coppens</h3>
                                         <h4></h4>
                                     </div>
                                 </div>

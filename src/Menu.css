@@ -1,7 +1,31 @@
-.menuDiv {
+.menuRDiv {
     z-index: 5;
     position: fixed;
     right: 10px;
+    top: 50px;
+    width: 50px;
+    height: 260px;
+    min-width: 200px;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    align-content: stretch;
+
+
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+.menuLDiv {
+    z-index: 5;
+    position: fixed;
+    left: 10px;
     top: 50px;
     width: 50px;
     height: 260px;
@@ -67,6 +91,9 @@
     box-shadow: 1px 1px 1px #3b3b3b;
     transform: scale(97%);
 }
+
+
+
 
 .hidden {
     display: none;

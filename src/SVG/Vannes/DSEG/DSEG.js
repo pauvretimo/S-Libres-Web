@@ -10,6 +10,7 @@ class DSEG extends Batiment {
     constructor(props) {
         super(props);
         this.floorNumber = 4;
+        this.url = "https://api.cyberlog.dev/get-calendar/vannes/dseg"
     }
 
     async componentDidMount() {
@@ -19,7 +20,7 @@ class DSEG extends Batiment {
     render() {
         return (
             this.state.isLoading
-                ? <div>load</div> : <div style={{background: "var(--background)"}} data-theme={this.state.theme} className="mainDiv">
+                ? <div>load</div> : <div style={{background: "var(--background)", width: "100vw", height: "100vh"}} data-theme={this.state.theme} className="mainDiv">
                     <Menu handleIsNow={this.handleIsNow} handleTheme={this.handleTheme} handleLeft={this.goDown} handleRight={this.goUp}></Menu>
                     <p className={this.state.floor === 0 ? "hidden" : "navArrowLeft navArrow"} onClick={this.goDown}>&#x3c;</p>
                     <p className={this.state.floor === this.floorNumber-1 ? "hidden" : "navArrowRight navArrow"} onClick={this.goUp}>&#x3e;</p>
