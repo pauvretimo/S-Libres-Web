@@ -103,15 +103,16 @@
     position: fixed;
     top: 50%;
     left: 50%;
-    width: 200px;
+    width: 300px;
     transform: translate(-50%, -50%);
 
-    border: 20px #00688f;
+    border: 3px solid var(--focusShadowColor);
     border-radius: 10px;
     color: var(--textColor);
     background-color: var(--color1);
-    box-shadow: 2px 2px 2px #707070;
+    box-shadow: 1px 1px 4px #707070;
     padding: 5px;
+    font-size: large;
 }
 
 .timeSelector {
@@ -148,6 +149,7 @@
     margin: 10px;
     box-shadow: inset 0 0 5px white;
     text-align: center;
+    font-size: x-large;
 
     cursor: pointer;
 }
@@ -155,6 +157,7 @@
 .timeText {
     color: var(--textColor);
     text-align: center;
+    font-size: inherit;
 }
 
 .submitButton {
@@ -166,6 +169,7 @@
     margin: 10px;
     box-shadow: 0 0 2px gray;
     cursor: pointer;
+    font-size: inherit;
 
     -moz-user-select: none;
     -khtml-user-select: none;
@@ -188,6 +192,7 @@
     margin-left: 5px;
     font-weight: bold;
     text-shadow: 0 0 2px var(--shadowColor);
+    font-size: inherit;
 }
 
 .textGreen {
@@ -203,7 +208,7 @@
 }
 
 .textGrey {
-    color: var(--textColor);
+    color: var(--grayColor);
 }
 
 .textLightBlue {

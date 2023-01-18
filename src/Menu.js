@@ -100,7 +100,7 @@ class Menu extends React.Component {
                     }}>x
                     </button>
                     <div>
-                        <p>&#169; touts droits réservés à Maxence JUNG et Timoté MOREAUX</p>
+                        <p>&#169; tous droits réservés à Maxence JUNG et Timoté MOREAUX</p>
                     </div>
                 </div>
                 <div className={this.state.showLegend ? "popUpMenu" : "hidden"}>
