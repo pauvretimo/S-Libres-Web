@@ -5,6 +5,7 @@ import ensibs from "./images/ensibs.png";
 import batEnsibs from "./images/BatEnsibs.jpg";
 import dseg from "./images/dseg.png";
 import batDseg from "./images/BatDseg.jpg";
+import Loading from "./widgets/Loading";
 
 class Homepage extends React.Component {
     constructor(props) {

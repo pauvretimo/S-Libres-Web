@@ -102,8 +102,6 @@ class DefaultSVG extends React.Component {
         window.addEventListener('mouseup', (e) => {
             let id = e.target.id
             if (!(id === "")) {
-                console.log(e.target.style.fill)
-                console.log(e.target.style.fill.toString() === "rgb(0, 255, 0)")
                 let color = e.target.style.fill.replace(')', ', 0.8)').replace('rgb', 'rgba')
                 this.setState({id: id, eventId: true, eventColor: color, isFree: e.target.style.fill === "rgb(0, 255, 0)" ? 2: e.target.style.fill === "rgb(255, 0, 0)" ? 0 : 1})
             }

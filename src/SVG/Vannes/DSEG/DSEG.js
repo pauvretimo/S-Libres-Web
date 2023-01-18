@@ -6,6 +6,7 @@ import DSEG_E3 from "./DSEG_E3";
 import "../../../Menu";
 import Menu from "../../../Menu";
 import Return from "../../../Return";
+import Loading from "../../../widgets/Loading";
 
 class DSEG extends Batiment {
     constructor(props) {
@@ -21,7 +22,7 @@ class DSEG extends Batiment {
     render() {
         return (
             this.state.isLoading
-                ? <div>load</div> : <div style={{background: "var(--background)", width: "100vw", height: "100vh"}} data-theme={this.state.theme} className="mainDiv">
+                ? <Loading/> : <div style={{background: "var(--background)", width: "100vw", height: "100vh"}} data-theme={this.state.theme} className="mainDiv">
                     <Menu handleIsNow={this.handleIsNow} handleTheme={this.handleTheme} handleLeft={this.goDown} handleRight={this.goUp}></Menu>
                     <Return/>
                     <p className={this.state.floor === 0 ? "hidden" : "navArrowLeft navArrow"} onClick={this.goDown}>&#x3c;</p>

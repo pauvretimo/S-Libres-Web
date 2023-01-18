@@ -1,0 +1,33 @@
+.loadingDiv {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 100px;
+    width: 100px;
+}
+
+.loadingLogo {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    animation: spin 3s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate3d(1, 1, 1, 0deg);
+    }
+    25% {
+        transform: rotate3d(0.9, 1, 1, 180deg);
+    }
+    50% {
+        transform: rotate3d(0.9, 1, 1, 360deg);
+    }
+    75% {
+        transform: rotate3d(1, 0.9, 0.8, -180deg);
+    }
+    100% {
+        transform: rotate3d(1, 0.9, 0.8, -0deg);
+    }
+}

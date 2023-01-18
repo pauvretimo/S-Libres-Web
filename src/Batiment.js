@@ -88,7 +88,6 @@ class Batiment extends React.Component {
             const n = this.state.floor + 1
             this.setState({floor: n})
         }
-        console.log(this.state.floor)
     }
 
     goDown = () => {
@@ -96,7 +95,6 @@ class Batiment extends React.Component {
             const n = this.state.floor - 1
             this.setState({floor: n})
         }
-        console.log(this.state.floor)
     }
 
     render() {
