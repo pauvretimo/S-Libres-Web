@@ -8,6 +8,7 @@ class DefaultSVG extends React.Component {
             id: "none",
             eventId: false,
             eventColor: "black",
+            isFree: true,
             loaded: false,
         }
         this.isNow = props.isNow;
@@ -15,6 +16,7 @@ class DefaultSVG extends React.Component {
         this.end = props.end;
         this.orientation = props.orientation;
         this.ical = props.ical;
+        this.isLandScape = props.isLandScape;
     }
 
     coloringNow = () => {
@@ -100,8 +102,10 @@ class DefaultSVG extends React.Component {
         window.addEventListener('mouseup', (e) => {
             let id = e.target.id
             if (!(id === "")) {
+                console.log(e.target.style.fill)
+                console.log(e.target.style.fill.toString() === "rgb(0, 255, 0)")
                 let color = e.target.style.fill.replace(')', ', 0.8)').replace('rgb', 'rgba')
-                this.setState({id: id, eventId: true, eventColor: color})
+                this.setState({id: id, eventId: true, eventColor: color, isFree: e.target.style.fill === "rgb(0, 255, 0)" ? 2: e.target.style.fill === "rgb(255, 0, 0)" ? 0 : 1})
             }
         })
     }
@@ -124,6 +128,7 @@ DefaultSVG.propTypes = {
     isNow: PropTypes.bool,
     start: PropTypes.object,
     end: PropTypes.object,
+    isLandScape: PropTypes.bool,
 }
 
 DefaultSVG.defaultProps = {
@@ -132,7 +137,7 @@ DefaultSVG.defaultProps = {
     isNow: true,
     start: new Date(),
     end: new Date(),
-
+    isLandScape: true,
 }
 
 export default DefaultSVG;

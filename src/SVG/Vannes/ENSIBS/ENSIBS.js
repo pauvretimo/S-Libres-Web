@@ -24,8 +24,8 @@ class ENSIBS extends Batiment {
                 <Return/>
                     <p className={this.state.floor === 0 ? "hidden" : "navArrowLeft navArrow"} onClick={this.goDown}>&#x3c;</p>
                     <p className={this.state.floor === this.floorNumber-1 ? "hidden" : "navArrowRight navArrow"} onClick={this.goUp}>&#x3e;</p>
-                    {this.state.floor === 0 && <ENSIBS_RDC key={"0" + this.state.key.toString()} ical={this.state.ical} isNow={this.state.isNow} start={this.state.start} end={this.state.end}/>}
-                    {this.state.floor === 1 && <ENSIBS_E1 key={"1" + this.state.key.toString()} ical={this.state.ical} isNow={this.state.isNow} start={this.state.start} end={this.state.end}/>}
+                    {this.state.floor === 0 && <ENSIBS_RDC key={"0" + this.state.key.toString()} ical={this.state.ical} isNow={this.state.isNow} start={this.state.start} end={this.state.end} isLandScape={this.state.isLandscape}/>}
+                    {this.state.floor === 1 && <ENSIBS_E1 key={"1" + this.state.key.toString()} ical={this.state.ical} isNow={this.state.isNow} start={this.state.start} end={this.state.end} isLandScape={this.state.isLandscape}/>}
                 </div>
         )
     }

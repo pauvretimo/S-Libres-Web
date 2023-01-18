@@ -26,10 +26,10 @@ class DSEG extends Batiment {
                     <Return/>
                     <p className={this.state.floor === 0 ? "hidden" : "navArrowLeft navArrow"} onClick={this.goDown}>&#x3c;</p>
                     <p className={this.state.floor === this.floorNumber-1 ? "hidden" : "navArrowRight navArrow"} onClick={this.goUp}>&#x3e;</p>
-                    {this.state.floor === 0 && <DSEG_RDC key={"0" + this.state.key.toString()} ical={this.state.ical} isNow={this.state.isNow} start={this.state.start} end={this.state.end}/>}
-                    {this.state.floor === 1 && <DSEG_E1 key={"1" + this.state.key.toString()} ical={this.state.ical} isNow={this.state.isNow} start={this.state.start} end={this.state.end}/>}
-                    {this.state.floor === 2 && <DSEG_E2 key={"2" + this.state.key.toString()} ical={this.state.ical} isNow={this.state.isNow} start={this.state.start} end={this.state.end}/>}
-                    {this.state.floor === 3 && <DSEG_E3 key={"3" + this.state.key.toString()} ical={this.state.ical} isNow={this.state.isNow} start={this.state.start} end={this.state.end}/>}
+                    {this.state.floor === 0 && <DSEG_RDC key={"0" + this.state.key.toString()} ical={this.state.ical} isNow={this.state.isNow} start={this.state.start} end={this.state.end} isLandScape={this.state.isLandscape}/>}
+                    {this.state.floor === 1 && <DSEG_E1 key={"1" + this.state.key.toString()} ical={this.state.ical} isNow={this.state.isNow} start={this.state.start} end={this.state.end} isLandScape={this.state.isLandscape}/>}
+                    {this.state.floor === 2 && <DSEG_E2 key={"2" + this.state.key.toString()} ical={this.state.ical} isNow={this.state.isNow} start={this.state.start} end={this.state.end} isLandScape={this.state.isLandscape}/>}
+                    {this.state.floor === 3 && <DSEG_E3 key={"3" + this.state.key.toString()} ical={this.state.ical} isNow={this.state.isNow} start={this.state.start} end={this.state.end} isLandScape={this.state.isLandscape}/>}
                 </div>
         )
     }

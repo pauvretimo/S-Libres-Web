@@ -39,17 +39,32 @@ body {
 
 .flexCardItem:hover {
     transform: rotate3d(1, 0, 0, 70deg) translateY(70%);
-    animation: 0.2s lightsOn forwards ease-in 0.4s;
+
+}
+
+.flexCardItem:hover .card {
+    animation: 0.3s lightsOn forwards ease-in 0.4s;
 }
 
 @keyframes lightsOn {
-    from {
-        background-color: var(--card-color);
+    0% {
+        background: radial-gradient(circle, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.2) 10%, var(--card-color) 20%), var(--card-color);
     }
-    to {
-        background: radial-gradient(circle, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.2) 46%, var(--card-color) 100%)
+    10% {
+        background: radial-gradient(circle, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.2) 15%, var(--card-color) 30%), var(--card-color);
     }
-
+    20% {
+        background: radial-gradient(circle, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.2) 10%, var(--card-color) 20%), var(--card-color);
+    }
+    30% {
+        background: radial-gradient(circle, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.2) 20%, var(--card-color) 40%), var(--card-color);
+    }
+    40% {
+        background: radial-gradient(circle, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.2) 10%, var(--card-color) 20%), var(--card-color);
+    }
+    100% {
+        background: radial-gradient(circle, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.2) 20%, var(--card-color) 56%), var(--card-color);
+    }
 }
 
 

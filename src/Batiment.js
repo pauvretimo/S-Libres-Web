@@ -13,9 +13,14 @@ class Batiment extends React.Component {
             start: new Date(),
             end: new Date(),
             key: 0,
+            isLandscape: true,
         };
         this.url = "https://api.cyberlog.dev/get-calendar"
         this.floorNumber = 0;
+    }
+
+    handleResize = () => {
+        this.setState({ isLandscape: window.innerWidth > window.innerHeight });
     }
 
     handleIsNow = (t, t1, t2) => {
@@ -45,6 +50,9 @@ class Batiment extends React.Component {
             storedTheme = "dark";
 
         this.setState({ isLoading: true, theme: storedTheme });
+
+        this.handleResize();
+        window.addEventListener("resize", this.handleResize);
 
 
     try {

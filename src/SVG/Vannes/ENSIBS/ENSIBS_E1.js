@@ -10,7 +10,7 @@ class ENSIBS_E1 extends DefaultSVG {
     render() {
         return (
             <div className="scaling-svg-container">
-                <svg width="1178.5" height="530.03" version="1.1" className="SVG_ENSIBS_E1 scaling-svg">
+                <svg width="1178.5" height="530.03" viewBox="0 0 1178.5 530.03" version="1.1" className="scaling-svg"  style={{transform: this.props.isLandScape ? "translate(-50%, -50%)" : "translate(-50%, -40%) rotate(90deg) scale(1.2)"}}>
                     <g transform="translate(-172.87 -132.83)">
                     <path
                         d="m178.44 574.68c-2.7431 0.40615-4.9875 2.8957-5.0392 5.6783-0.059 8.5052-8e-3 17.015-0.0253 25.522 0.0157 7.9409-0.0313 15.884 0.0235 23.824 0.0371 2.9936 2.6418 5.661 5.6372 5.7499 5.5712 0.0772 11.148 0.0111 16.721 0.0331 27.321-5e-3 54.643 0.0104 81.964-8e-3 2.7637 0.019 5.3593-2.0852 5.8429-4.8174 0.28602-2.0677 0.0741-4.1748 0.13942-6.2588-9e-3 -14.731 0.0182-29.463-0.0137-44.193-0.12995-3.0729-2.9428-5.695-6.017-5.6104-32.771 3e-3 -65.543-0.011-98.313 7e-3 -0.30662 0.0247-0.61324 0.0493-0.91986 0.074z"
@@ -119,7 +119,9 @@ class ENSIBS_E1 extends DefaultSVG {
                         this.setState({eventId: false})
                     }}>x
                     </button>
-                    <p className="popUpText">{this.state.id}</p>
+                    <p className="popUpText">
+                        {this.state.isFree === 0 ? "La salle est occupée.": this.state.isFree === 1 ? "La salle est bientôt occupée." : "La salle est libre !" }<br/><br/>
+                        {this.state.id}</p>
                 </div>
             </div>
         )
