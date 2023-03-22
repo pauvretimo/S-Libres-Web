@@ -11,7 +11,7 @@ class DSEG_E1 extends DefaultSVG {
     render() {
         return (
             <div className="scaling-svg-container" >
-                <svg width="845.55" height="470.37" version="1.1" viewBox="0 0 845.55 470.37" className="scaling-svg" style={{transform: this.props.isLandScape ? "translate(-50%, -50%)" : "translate(-50%, -40%) rotate(90deg) scale(1.2)"}}>
+                <svg version="1.1" viewBox="0 0 845.55 470.37" className="scaling-svg" height={this.props.isLandScape ? "100%" : "80%"} width={this.props.isLandScape ? "80%" : "100%"} style={{transform: this.props.isLandScape ? "translate(-50%, -50%)" : "translate(-50%, -50%) rotate(90deg)"}}>
                     <g transform="translate(-78.345 -34.247)">
                         <defs>
                             <pattern id="patternEscaliersLtoR" patternUnits="userSpaceOnUse" width="8" height="8">

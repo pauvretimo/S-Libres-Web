@@ -56,13 +56,8 @@
     background-color: #0ae;
     cursor: pointer;
     display: none;
-    box-shadow: 2px 2px 2px #707070;
 
     animation: itemAnimation 0.6s forwards;
-}
-
-.menuItems:active {
-    box-shadow: 1px 1px 1px #707070;
 }
 
 @keyframes itemAnimation {
@@ -83,8 +78,11 @@
     border: 20px #00688f;
     color: #fff;
     background-color: #0ae;
-    box-shadow: 2px 2px 2px #707070;
     cursor: pointer;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
 }
 
 .menuOpen:active {
@@ -217,4 +215,29 @@
 
 .textBlue {
     color: #00f;
+}
+
+.lineMenu {
+    stroke-dasharray: 100;
+    stroke-dashoffset: 131.4142135624;
+    animation: dash 0.2s ease-in-out forwards;
+}
+
+@keyframes dash {
+    to {
+        stroke-dashoffset: 70;
+    }
+}
+
+.opened {
+    animation: dashOpen 0.2s ease-in-out forwards;
+}
+
+@keyframes dashOpen {
+    from {
+        stroke-dashoffset: 70;
+    }
+    to {
+        stroke-dashoffset: -30;
+    }
 }

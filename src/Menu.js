@@ -54,6 +54,11 @@ class Menu extends React.Component {
         for (const i of items) {
             i.style.display = toState;
         }
+
+        const itemsLines = document.getElementsByClassName("lineMenu")
+        for (const i of itemsLines) {
+            i.classList.toggle("opened");
+        }
     }
 
     handleSubmitTime = () => {
@@ -76,7 +81,13 @@ class Menu extends React.Component {
     render() {
         return (
             <div className="menuRDiv">
-                <button className="menuOpen" onClick={this.display}>☰</button>
+                <button className="menuOpen" onClick={this.display}>
+                    <svg viewBox="0 0 50 50" height="30px" width="30px" strokeLinecap="round">
+                        <path className="lineMenu" d="M10 13 L40 13 L10 37" fill="transparent" stroke="white" strokeWidth="5"/>
+                        <line className="lineMenu" x1="10" y1="25" x2="40" y2="25" stroke="white" strokeWidth="5"/>
+                        <path className="lineMenu" d="M10 37 L40 37 L10 13" fill="transparent" stroke="white" strokeWidth="5"/>
+                    </svg>
+                </button>
                 <button className="menuItems" onClick={() => this.setState({showLegend: true, showTimer: false, showCredits: false})}>?</button>
                 <button className="menuItems" onClick={() => this.setState({showTimer: true, showLegend: false, showCredits: false})}>&#128344;</button>
                 <button className="menuItems" onClick={() => this.setState({showCredits: true, showTimer: false, showLegend: false})}>&#169;</button>

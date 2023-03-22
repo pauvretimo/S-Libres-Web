@@ -88,7 +88,6 @@ path.room:hover {
     padding: 0;
 
     color: var(--arrowColor);
-    filter: drop-shadow(1px 1px 2px var(--shadowColor));
     text-align: center;
 
     font-size: xxx-large;
@@ -108,15 +107,13 @@ path.room:hover {
 .scaling-svg-container {
     overflow: hidden;
     position: relative;
-    height:90%;
-    max-height: 90%;
+    height: 100%;
+    max-height: 100%;
     padding: 0;
     /* over-ride this inline for aspect ratio other than square */
 }
 .scaling-svg {
     position: absolute;
-    max-width: 100%;
-    max-height: 100%;
     left:50%;
     top:50%;
 }

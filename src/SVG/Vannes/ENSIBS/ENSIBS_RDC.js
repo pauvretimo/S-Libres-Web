@@ -7,7 +7,9 @@ class ENSIBS_RDC extends DefaultSVG {
     render() {
         return (
             <div className="scaling-svg-container">
-                <svg width="1311.4" height="609.32" viewBox="0 0 1311.4 609.32" version="1.1" className="SVG_ENSIBS_RDC scaling-svg" style={{transform: this.props.isLandScape ? "translate(-50%, -50%)" : "translate(-50%, -40%) rotate(90deg) scale(1.2)"}}>
+                <svg viewBox="0 0 1311.4 609.32" version="1.1" className="SVG_ENSIBS_RDC scaling-svg"
+                     height={this.props.isLandScape ? "100%" : "80%"} width={this.props.isLandScape ? "80%" : "100%"}
+                     style={{transform: this.props.isLandScape ? "translate(-50%, -50%)" : "translate(-50%, -50%) rotate(90deg)"}}>
                     <g transform="translate(-39.769 -108.88)">
                     <path
                         d="m1203.7 569.16c-2.742 0.40671-4.9875 2.8963-5.0392 5.6783-0.059 8.5052-0.01 17.015-0.025 25.522 0.01 35.882-0.011 71.766 0.01 107.65-0.022 2.8018 2.1429 5.4124 4.9146 5.8662 2.2736 0.24498 4.5761 0.0572 6.8616 0.1161 44.734-5e-3 89.469 0.0107 134.2-8e-3 2.7634 0.0154 5.3602-2.0838 5.8449-4.8172 0.286-2.0676 0.074-4.1748 0.1394-6.2588-0.01-42.689 0.013-85.379-0.01-128.07-0.044-3.0906-2.8292-5.7967-5.9193-5.7565-46.686-4e-3 -93.372-0.0121-140.06 4e-3 -0.3066 0.0247-0.6133 0.0493-0.9199 0.074z"
