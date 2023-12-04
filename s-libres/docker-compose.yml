@@ -1,0 +1,28 @@
+version: '3.3'
+
+services:
+  sample-prod:
+    container_name: s-libres
+    build:
+      context: .
+      dockerfile: Dockerfile
+    networks:
+      - web
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=web"
+      - "traefik.http.routers.s-libres.entrypoints=web,websecure"
+      - "traefik.http.middlewares.redirect-https.redirectScheme.scheme=https"
+      - "traefik.http.middlewares.redirect-https.redirectScheme.permanent=true"
+      - "traefik.http.routers.s-libres.middlewares=redirect-https"
+      - "traefik.http.routers.s-libres.rule=Host(`s-libres.cyberlog.dev`) || Host(`s-libre.cyberlog.dev`) || Host(`slibre.cyberlog.dev`) || Host(`slibres.cyberlog.dev`) || Host(`salle.cyberlog.dev`) || Host(`salles.cyberlog.dev`)"
+      - "traefik.http.services.s-libres.loadbalancer.server.port=80"
+      - "traefik.http.routers.s-libres.tls=true"
+      - "traefik.http.routers.s-libres.tls.certresolver=lets-encrypt"
+      - "traefik.http.routers.s-libres.middlewares=redirect-salle"
+      - "traefik.http.middlewares.redirect-salle.redirectRegex.regex=^https?://(salle|salles|slibre|slibres|s-libre)\\.cyberlog\\.dev(.*)"
+      - "traefik.http.middlewares.redirect-salle.redirectRegex.replacement=https://s-libres.cyberlog.dev$${2}"
+    restart: unless-stopped
+networks:
+    web:
+        external: true
