@@ -166,14 +166,22 @@
     left: 50%;
     width: 300px;
     transform: translate(-50%, -50%);
-
-    border: 3px solid var(--focusShadowColor);
-    border-radius: 10px;
-    color: var(--textColor);
-    background-color: var(--color1);
-    box-shadow: 1px 1px 4px #707070;
     padding: 5px;
-    font-size: large;
+    color: white;
+
+    background: #5E5DF0;
+    border-radius: 10px;
+    box-shadow: #5E5DF0 0 10px 20px -10px;
+    box-sizing: border-box;
+    
+    font-family: Inter,Helvetica,"Apple Color Emoji","Segoe UI Emoji",NotoColorEmoji,"Noto Color Emoji","Segoe UI Symbol","Android Emoji",EmojiSymbols,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans",sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    opacity: 1;
+    outline: 0 solid transparent;
+    word-break: break-word;
+    border: 0;
 }
 
 .timeSelector {
@@ -188,7 +196,7 @@
 .popUpCloseButton {
     height: fit-content;
     width: fit-content;
-    color: var(--textColor);
+    color: white;
 
     border: none;
     background: none;
@@ -199,8 +207,46 @@
     cursor: pointer;
 }
 
+.weekdayDiv {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
+    gap: 10px;
+}
+
+.weekdayButton {
+    color: #5E5DF0;
+
+    background: white;
+    border-radius: 10px;
+    box-shadow: white 0 10px 20px -10px;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-family: Inter,Helvetica,"Apple Color Emoji","Segoe UI Emoji",NotoColorEmoji,"Noto Color Emoji","Segoe UI Symbol","Android Emoji",EmojiSymbols,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans",sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    opacity: 1;
+    outline: 0 solid transparent;
+    word-break: break-word;
+    border: 0;
+
+}
+
+.selectedDay {
+    transform: scale(105%);
+    color: white;
+    border: solid 2px white;
+    background: #5E5DF0;
+    box-shadow: white 0 10px 20px -10px;
+}
+
 .timeInput {
-    color: var(--textColor);
+    color: white;
     height: 50px;
     width: fit-content;
     padding: 5px;
@@ -216,13 +262,13 @@
 }
 
 .timeText {
-    color: var(--textColor);
+    color: white;
     text-align: center;
     font-size: inherit;
 }
 
 .submitButton {
-    color: var(--textColor);
+    color: white;
     padding: 5px;
     background: rgba(255, 255, 255, 0.5);
     border: 2px black;
@@ -241,11 +287,29 @@
 
 .legendDiv {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     align-content: center;
+}
+
+.legendSubDiv {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.colorBox {
+    height: 20px;
+    width: 20px;
+    margin: 5px;
+    border-radius: 5px;
+    box-shadow: 0 0 2px var(--shadowColor);
+    border: solid 2px white;
 }
 
 .textLegend {
@@ -256,28 +320,28 @@
     font-size: inherit;
 }
 
-.textGreen {
-    color: #0f0;
+.greenBox {
+    background-color: #0f0;
 }
 
-.textOrange {
-    color: #ff6200;
+.orangeBox {
+    background-color: #ff6200;
 }
 
-.textRed {
-    color: #f00;
+.redBox {
+    background-color: #f00;
 }
 
-.textGrey {
-    color: var(--grayColor);
+.greyBox {
+    background-color: var(--grayColor);
 }
 
-.textLightBlue {
-    color: #0ae;
+.lightBlueBox {
+    background-color: #0ae;
 }
 
-.textBlue {
-    color: #00f;
+.blueBox {
+    background-color: #00f;
 }
 
 .lineMenu {

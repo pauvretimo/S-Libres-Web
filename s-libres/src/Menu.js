@@ -10,6 +10,8 @@ class Menu extends React.Component {
             showTimer: false,
             showCredits: false,
             menuOpened: false,
+            weekday: new Date().getDay() - 1 % 7,
+            today: new Date().getDay() - 1 % 7,
             t1: new Date(),
             t2: new Date()
         }
@@ -19,6 +21,8 @@ class Menu extends React.Component {
         this.handleRight = props.handleRight;
         this.handleT1 = this.handleT1.bind(this)
         this.handleT2 = this.handleT2.bind(this)
+        this.handleWeekday = this.handleWeekday.bind(this)
+        this.createWeekdayButtons = this.createWeekdayButtons.bind(this)
     }
 
     handleKeys = (e) => {
@@ -62,17 +66,55 @@ class Menu extends React.Component {
         this.handleIsNow(true, new Date(), new Date());
     }
 
+    createWeekdayButtons = () => {
+        let today = new Date().getDay() - 1 % 7;
+        let weekday = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"]
+        let buttonText = [];
+        let buttonValue = [];
+        if (today < 3) {
+            buttonText = ["Aujourd'hui", "Demain", weekday[today+2]]
+            buttonValue = [today, today+1, today+2]
+        } else if (today === 3) {
+            buttonText = ["Aujourd'hui", "Demain", "Lundi"]
+            buttonValue = [today, today+1, today+4]
+        } else if (today === 4) {
+            buttonText = ["Aujourd'hui", "Lundi", "Mardi"]
+            buttonValue = [today, today+3, today+4]
+        } else {
+            buttonText = ["Lundi", "Mardi", "Mercredi"]
+            if (today === 5) {
+                buttonValue = [today+2, today+3, today+4]
+            } else {
+                buttonValue = [today+1, today+2, today+3]
+            }
+        }
+        return (
+                [0, 1, 2].map((i) => {
+                    return (
+                        <button className={this.state.weekday === buttonValue[i] ? "selectedDay weekdayButton" : "weekdayButton"} value={buttonValue[i]} onClick={this.handleWeekday}>{buttonText[i]}</button>
+                    )
+                })
+        );
+    }
+
+    handleWeekday(event) {
+        this.setState({weekday: parseInt(event.target.value),
+            t1: new Date(new Date(Date.now()+ 86400000*(event.target.value - this.state.today)).toUTCString().slice(0, 17) + this.state.t1.getHours().toString() + ":" + this.state.t1.getMinutes().toString() + ":00"),
+            t2: new Date(new Date(Date.now()+ 86400000*(event.target.value - this.state.today)).toUTCString().slice(0, 17) + this.state.t2.getHours().toString() + ":" + this.state.t2.getMinutes().toString() + ":00")
+        })  
+    }
+
     handleT1(event) {
-        this.setState({t1: new Date(new Date(Date.now()).toUTCString().slice(0, 17) + event.target.value + ":00")})
+        this.setState({t1: new Date(new Date(Date.now()+ 86400000*(this.state.weekday - this.state.today)).toUTCString().slice(0, 17) + event.target.value + ":00")})
     }
     handleT2(event) {
-        this.setState({t2: new Date(new Date(Date.now()).toUTCString().slice(0, 17) + event.target.value + ":00")})
+        this.setState({t2: new Date(new Date(Date.now()+ 86400000*(this.state.weekday - this.state.today)).toUTCString().slice(0, 17) + event.target.value + ":00")})
     }
 
     render() {
-        return (
+        return (    
             <div className="menuRDiv">
-                <button className="menuOpen" onClick={this.display}>
+                <div className="menuOpen" onClick={this.display}>
                     <svg viewBox="0 0 50 50" height="30px" width="30px" strokeLinecap="round">
                         <path className={this.state.menuOpened ? "lineMenu opened" : "lineMenu"} d="M10 13 L40 13 L10 37" fill="transparent" stroke="white" strokeWidth="5"/>
                         <line className={this.state.menuOpened ? "lineMenu opened" : "lineMenu"} x1="10" y1="25" x2="40" y2="25" stroke="white" strokeWidth="5"/>
@@ -82,13 +124,17 @@ class Menu extends React.Component {
                 <button className="menuItems" style={{display: this.state.menuOpened ? "block" : "none"}} onClick={() => this.setState({showTimer: true, showLegend: false, showCredits: false})}>&#128344;</button>
                 <button className="menuItems" style={{display: this.state.menuOpened ? "block" : "none"}} onClick={() => this.setState({showCredits: true, showTimer: false, showLegend: false})}>&#169;</button>
                 <button className="menuItems" style={{display: this.state.menuOpened ? "block" : "none"}} onClick={this.handleTheme}>&#127763;</button>
-                </button>
+                </div>
                 <div className={this.state.showTimer ? "popUpMenu" : "hidden"}>
                     <button className="popUpCloseButton" onClick={() => {
                         this.setState({showTimer: false})
                     }}>x
                     </button>
-                    <p className="timeText">Sélectionner le créneau horaire</p>
+                        <p className="timeText">Sélectionner le jour:</p>
+                        <div className="weekdayDiv">
+                            {this.createWeekdayButtons()}
+                        </div>
+                        <p className="timeText">Sélectionner le créneau horaire</p>
                     <div className="timeSelector">
                         <input type="time" className="timeInput" maxLength="2" onChange={this.handleT1} ref={(input) => { this.nameInput = input;}}/>
                         <input type="time" className="timeInput" maxLength="2" onChange={this.handleT2}/>
@@ -111,12 +157,30 @@ class Menu extends React.Component {
                     }}>x
                     </button>
                     <div className="legendDiv">
-                        <p className="textGreen textLegend">Salles libres</p>
-                        <p className="textOrange textLegend">Salles bientôt occupées</p>
-                        <p className="textRed textLegend">Salles occupées</p>
-                        <p className="textGrey textLegend">Salles non disponibles</p>
-                        <p className="textLightBlue textLegend">Couloirs, escaliers et ascenseurs</p>
-                        <p className="textBlue textLegend">Toilettes</p>
+                        <div className="legendSubDiv">
+                            <div className="colorBox greenBox"></div>
+                            <p className="textLegend">Salles libres</p>
+                        </div>
+                        <div className="legendSubDiv">
+                            <div className="colorBox orangeBox"></div>
+                        <p className="textLegend">Salles bientôt occupées</p>
+                        </div>
+                        <div className="legendSubDiv">
+                            <div className="colorBox redBox"></div>
+                        <p className="textLegend">Salles occupées</p>
+                        </div>
+                        <div className="legendSubDiv">
+                            <div className="colorBox greyBox"></div>
+                        <p className="textLegend">Salles non disponibles</p>
+                        </div>
+                        <div className="legendSubDiv">
+                            <div className="colorBox lightBlueBox"></div>
+                        <p className="textLegend">Couloirs, escaliers et ascenseurs</p>
+                        </div>
+                        <div className="legendSubDiv">
+                            <div className="colorBox blueBox"></div>
+                        <p className="textLegend">Toilettes</p>
+                        </div>
                     </div>
                 </div>
             </div>

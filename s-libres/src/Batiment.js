@@ -130,8 +130,8 @@ class Batiment extends React.Component {
         <div className="floorSelection"
             style={
                 this.state.isLandscape 
-                    ? {width: "35px", left: "20px", top: "50%", height: "70vh", gridAutoFlow: "row", transform: "translateY(-50%)", gap: "3vh"} 
-                    : {height: "35px", bottom: "20px", left: "50%", width: "80vw", gridAutoFlow: "column", transform: "translateX(-50%)", gap: "3vw"}
+                    ? {width: "35px", left: "20px", top: "50%", height: "70vh", gridAutoFlow: "row", transform: "translateY(-50%)", gap: "5vh"} 
+                    : {height: "35px", bottom: "20px", left: "50%", width: "80vw", gridAutoFlow: "column", transform: "translateX(-50%)", gap: "5vw"}
                 }
         >
         {

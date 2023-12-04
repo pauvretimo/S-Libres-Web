@@ -41,3 +41,45 @@ html[data-theme="dark"] {
   --brightness: 1.8;
   --floorButtonColor: white;
 }
+
+.floorSelection {
+	display: grid;
+    grid-auto-columns: 1fr;
+    grid-auto-rows: 1fr;
+
+    position: fixed;
+    z-index: 2;
+}
+
+.floorButtonDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+    vertical-align: middle;
+    font-size: x-large;
+    border-radius: 3px;
+
+    background: #5E5DF0;
+    border-radius: 999px;
+    box-shadow: #5E5DF0 0 10px 20px -10px;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-family: Inter,Helvetica,"Apple Color Emoji","Segoe UI Emoji",NotoColorEmoji,"Noto Color Emoji","Segoe UI Symbol","Android Emoji",EmojiSymbols,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans",sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 0px;
+    opacity: 1;
+    outline: 0 solid transparent;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    word-break: break-word;
+    border: 0;
+}
+
+.floorButtonText {
+    text-align: center;
+    vertical-align: middle;
+}

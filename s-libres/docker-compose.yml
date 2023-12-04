@@ -22,7 +22,7 @@ services:
       - "traefik.http.routers.s-libres.middlewares=redirect-salle"
       - "traefik.http.middlewares.redirect-salle.redirectRegex.regex=^https?://(salle|salles|slibre|slibres|s-libre)\\.cyberlog\\.dev(.*)"
       - "traefik.http.middlewares.redirect-salle.redirectRegex.replacement=https://s-libres.cyberlog.dev$${2}"
-    restart: unless-stopped
+    restart: always
 networks:
     web:
         external: true
