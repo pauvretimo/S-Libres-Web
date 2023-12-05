@@ -14,6 +14,7 @@ class Batiment extends React.Component {
             end: new Date(),
             key: 0,
             isLandscape: true,
+            showNames: false,
 
             touchStart: null,
             touchEnd: null,
@@ -48,12 +49,16 @@ class Batiment extends React.Component {
 
     async componentDidMount() {
         let storedTheme = localStorage.getItem('theme') || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        let storedShowNames = localStorage.getItem('showNames') === "true" || false;
+        console.log(localStorage.getItem('showNames') === "true");
         if (storedTheme)
             document.documentElement.setAttribute('data-theme', storedTheme)
         else
             storedTheme = "dark";
 
-        this.setState({ isLoading: true, theme: storedTheme });
+        this.setState({ isLoading: true, theme: storedTheme, showNames: storedShowNames }, () => setTimeout(() => {
+            this.state.showNames ? this.addNames() : this.removeNames();
+        }, 100));
 
         this.handleResize();
         window.addEventListener("resize", this.handleResize);
@@ -93,20 +98,70 @@ class Batiment extends React.Component {
     goUp = () => {
         if (this.state.floor + 1 < this.floorNumber) {
             const n = this.state.floor + 1
-            this.setState({floor: n})
+            this.setState({floor: n}, () => this.state.showNames ? this.addNames() : this.removeNames());
         }
     }
 
     goDown = () => {
         if (this.state.floor - 1 >= 0) {
             const n = this.state.floor - 1
-            this.setState({floor: n})
+            this.setState({floor: n}, () => this.state.showNames ? this.addNames() : this.removeNames())
         }
     }
 
     goTo = (i) => {
         if(i >= 0 && i < this.floorNumber) {
-            this.setState({floor: i})
+            this.setState({floor: i}, () => this.state.showNames ? this.addNames() : this.removeNames())
+        }
+    }
+
+    addNames = (events) => {
+        console.log("addNames");
+        // get g tag element
+        let g = document.getElementsByTagNameNS("http://www.w3.org/2000/svg", "g")[0];
+        // get all rooms to list
+        let rooms = document.getElementsByClassName("room");
+
+        // create text element for each room
+        for (let i = 0; i < rooms.length; i++) {
+            const room = rooms[i];
+            // get room center point with getBoundingClientRect()
+            let bbox = room.getBBox();
+            let x = bbox.x + 5;
+            let y = bbox.y - 50;
+
+            let wrapper = document.createElementNS("http://www.w3.org/2000/svg", "foreignObject");
+            wrapper.setAttribute("class", "roomName");
+            wrapper.setAttribute("x", x);
+            wrapper.setAttribute("y", y);
+            wrapper.setAttribute("width", (bbox.width-10).toString() + "px");
+            wrapper.setAttribute("height", (bbox.height+100).toString() + "px");
+            
+            let p = document.createElement("p");
+            p.innerHTML = room.getAttribute("id");
+
+            wrapper.appendChild(p);
+
+            g.appendChild(wrapper);
+        }
+
+        this.setState({showNames: true}, localStorage.setItem("showNames", "true"));
+    }
+
+    removeNames = () => {
+        // get all text with className "roomName" and delete them
+        let texts = document.getElementsByClassName("roomName");
+        while (texts.length > 0) {
+            texts[0].remove();
+        }
+        this.setState({showNames: false}, localStorage.setItem("showNames", "false"));
+    }
+
+    toggleNames = () => {
+        if (document.getElementsByClassName("roomName").length > 0 && this.state.showNames) {
+            this.removeNames();
+        } else {
+            this.addNames();
         }
     }
 

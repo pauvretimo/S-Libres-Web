@@ -26,23 +26,28 @@ body {
     align-content: center;
 }
 
+.flexCardWrapper {
+    width: 250px;
+    height: 200px;
+    margin: 30px;
+    display: block;
+}
+
 .flexCardItem {
     width: 250px;
     height: 200px;
     transform-style: preserve-3d;
-    margin: 30px;
     transition: all 0.3s ease-in-out;
-    display: block;
     cursor: pointer;
 }
 
 
-.flexCardItem:hover {
+.flexCardWrapper:hover .flexCardItem {
     transform: rotate3d(1, 0, 0, 70deg) translateY(70%);
 
 }
 
-.flexCardItem:hover .card {
+.flexCardWrapper:hover .flexCardItem .card {
     animation: 0.3s lightsOn forwards ease-in 0.4s;
 }
 
@@ -99,7 +104,7 @@ body {
     box-shadow: 0 0 1em var(--shadowColor);
 }
 
-.flexCardItem:hover .holoImage {
+.flexCardWrapper:hover .flexCardItem .holoImage {
     display: block;
     animation: 0.3s holoImagePopup forwards ease-in 0.4s;
 }

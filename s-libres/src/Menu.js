@@ -8,7 +8,7 @@ class Menu extends React.Component {
         this.state = {
             showLegend: false,
             showTimer: false,
-            showCredits: false,
+            showRoomName: false,
             menuOpened: false,
             weekday: new Date().getDay() - 1 % 7,
             today: new Date().getDay() - 1 % 7,
@@ -19,6 +19,7 @@ class Menu extends React.Component {
         this.handleTheme = props.handleTheme;
         this.handleLeft = props.handleLeft;
         this.handleRight = props.handleRight;
+        this.handleRoomName = props.handleRoomName;
         this.handleT1 = this.handleT1.bind(this)
         this.handleT2 = this.handleT2.bind(this)
         this.handleWeekday = this.handleWeekday.bind(this)
@@ -26,9 +27,9 @@ class Menu extends React.Component {
     }
 
     handleKeys = (e) => {
-        if (e.code === "ArrowLeft" && !this.state.showTimer && !this.state.showLegend && !this.state.showCredits) {
+        if (e.code === "ArrowLeft" && !this.state.showTimer && !this.state.showLegend && !this.state.showRoomName) {
             this.handleLeft();
-        } else if (e.code === "ArrowRight" && !this.state.showTimer && !this.state.showLegend && !this.state.showCredits) {
+        } else if (e.code === "ArrowRight" && !this.state.showTimer && !this.state.showLegend && !this.state.showRoomName) {
             this.handleRight();
         }
     }
@@ -120,9 +121,9 @@ class Menu extends React.Component {
                         <line className={this.state.menuOpened ? "lineMenu opened" : "lineMenu"} x1="10" y1="25" x2="40" y2="25" stroke="white" strokeWidth="5"/>
                         <path className={this.state.menuOpened ? "lineMenu opened" : "lineMenu"} d="M10 37 L40 37 L10 13" fill="transparent" stroke="white" strokeWidth="5"/>
                     </svg>
-                <button className="menuItems" style={{display: this.state.menuOpened ? "block" : "none"}} onClick={() => this.setState({showLegend: true, showTimer: false, showCredits: false})}>?</button>
-                <button className="menuItems" style={{display: this.state.menuOpened ? "block" : "none"}} onClick={() => this.setState({showTimer: true, showLegend: false, showCredits: false})}>&#128344;</button>
-                <button className="menuItems" style={{display: this.state.menuOpened ? "block" : "none"}} onClick={() => this.setState({showCredits: true, showTimer: false, showLegend: false})}>&#169;</button>
+                <button className="menuItems" style={{display: this.state.menuOpened ? "block" : "none"}} onClick={() => this.setState({showLegend: true, showTimer: false})}>?</button>
+                <button className="menuItems" style={{display: this.state.menuOpened ? "block" : "none"}} onClick={() => this.setState({showTimer: true, showLegend: false})}>&#128344;</button>
+                <button className="menuItems" style={{display: this.state.menuOpened ? "block" : "none"}} onClick={this.handleRoomName}>&#169;</button>
                 <button className="menuItems" style={{display: this.state.menuOpened ? "block" : "none"}} onClick={this.handleTheme}>&#127763;</button>
                 </div>
                 <div className={this.state.showTimer ? "popUpMenu" : "hidden"}>
@@ -140,15 +141,6 @@ class Menu extends React.Component {
                         <input type="time" className="timeInput" maxLength="2" onChange={this.handleT2}/>
                         <button className="submitButton" onClick={this.handleDisable}>disable</button>
                         <button className="submitButton" onClick={this.handleSubmitTime}>Submit</button>
-                    </div>
-                </div>
-                <div className={this.state.showCredits ? "popUpMenu" : "hidden"}>
-                    <button className="popUpCloseButton" onClick={() => {
-                        this.setState({showCredits: false})
-                    }}>x
-                    </button>
-                    <div>
-                        <p>&#169; tous droits réservés à Maxence JUNG et Timoté MOREAUX</p>
                     </div>
                 </div>
                 <div className={this.state.showLegend ? "popUpMenu" : "hidden"}>
@@ -180,6 +172,10 @@ class Menu extends React.Component {
                         <div className="legendSubDiv">
                             <div className="colorBox blueBox"></div>
                         <p className="textLegend">Toilettes</p>
+                        <br/>
+                        </div>
+                        <div className="legendSubDiv">
+                            <p style={{margin: "5px"}}>&#169; tous droits réservés à Maxence JUNG et Timoté MOREAUX</p>
                         </div>
                     </div>
                 </div>
@@ -193,6 +189,7 @@ Menu.propTypes = {
     handleTheme: PropTypes.func,
     handleLeft: PropTypes.func,
     handleRight: PropTypes.func,
+    handleRoomName: PropTypes.func,
 }
 
 Menu.defaultProps = {
@@ -200,6 +197,7 @@ Menu.defaultProps = {
     handleTheme: () => {},
     handleLeft: () => {},
     handleRight: () => {},
+    handleRoomName: () => {},
 }
 
 export default Menu;

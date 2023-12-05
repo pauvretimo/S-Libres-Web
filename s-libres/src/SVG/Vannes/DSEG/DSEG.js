@@ -23,7 +23,7 @@ class DSEG extends Batiment {
         return (
             this.state.isLoading
                 ? <Loading/> : <div onTouchStart={this.onTouchStart} onTouchMove={this.onTouchMove} onTouchEnd={this.onTouchEnd} style={{background: "var(--background)", width: "100vw", height: "100vh"}} data-theme={this.state.theme} className="mainDiv">
-                    <Menu handleIsNow={this.handleIsNow} handleTheme={this.handleTheme} handleLeft={this.goDown} handleRight={this.goUp}></Menu>
+                    <Menu handleIsNow={this.handleIsNow} handleTheme={this.handleTheme} handleLeft={this.goDown} handleRight={this.goUp} handleRoomName={this.toggleNames}></Menu>
                     <Return/>
                     {this.renderMenu()}
                     {this.state.floor === 0 && <DSEG_RDC key={"0" + this.state.key.toString()} ical={this.state.ical} isNow={this.state.isNow} start={this.state.start} end={this.state.end} isLandScape={this.state.isLandscape}/>}
