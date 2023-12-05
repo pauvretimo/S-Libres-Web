@@ -123,7 +123,7 @@ class Menu extends React.Component {
                     </svg>
                 <button className="menuItems" style={{display: this.state.menuOpened ? "block" : "none"}} onClick={() => this.setState({showLegend: true, showTimer: false})}>?</button>
                 <button className="menuItems" style={{display: this.state.menuOpened ? "block" : "none"}} onClick={() => this.setState({showTimer: true, showLegend: false})}>&#128344;</button>
-                <button className="menuItems" style={{display: this.state.menuOpened ? "block" : "none"}} onClick={this.handleRoomName}>&#169;</button>
+                <button className="menuItems" style={{display: this.state.menuOpened ? "block" : "none"}} onClick={this.handleRoomName}>&#127991;</button>
                 <button className="menuItems" style={{display: this.state.menuOpened ? "block" : "none"}} onClick={this.handleTheme}>&#127763;</button>
                 </div>
                 <div className={this.state.showTimer ? "popUpMenu" : "hidden"}>
